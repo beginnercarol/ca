@@ -60,8 +60,8 @@ const webpackConfig = {
         }),
         new HtmlWebpackPlugin({
             filename:'index.html',
-            template:path.join(__dirname,'/server/views/index.template.html'),
-            inject:true
+            template:path.join(__dirname,'/server/views/index.template.ejs'),
+            inject:false
         }),
         new CleanWebpackPlugin([path.join(__dirname,'/client/dist/app.*.css')]) 
     ],

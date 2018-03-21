@@ -10,9 +10,10 @@ import {connect} from 'react-redux';
 class Home extends Component{
     render(){
         return (
-            <Switch>
-                <Route path='/' content={DropDown} />
-            </Switch>
+            // <Switch>
+            //     <Route path='/' content={DropDown} />
+            // </Switch>
+            <DropDown />
         )
     } 
 }
