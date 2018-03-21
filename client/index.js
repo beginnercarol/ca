@@ -5,14 +5,13 @@ import store from './store/configureStore';
 import {Provider} from 'react-redux';
 import Home from './application/home';
 import createBrowserHistory from 'history/createBrowserHistory';
-
 const history = createBrowserHistory();
 
 
 ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
-            <Home />
+            <Home {...this.props}/>
         </Router>
     </Provider>,
     document.getElementById('root')

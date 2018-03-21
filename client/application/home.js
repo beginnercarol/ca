@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Router,Link,Route,Switch} from 'react-router-dom';
+import {Router,Link,Route,Switch,withRouter} from 'react-router-dom';
 import CalendarModal from '../components/calendar-opt';
 import DropDown from '../components/dropdown';
 import store from '../store/configureStore';
@@ -10,9 +10,12 @@ import {connect} from 'react-redux';
 class Home extends Component{
     render(){
         return (
-            <Switch>
-                <Route path='/' component={DropDown} />
-            </Switch>
+            <div className="homepage">
+                <Switch>
+                    <Route exact path='/' component={DropDown} />
+                    <Route path='/calendar' component={CalendarModal} />
+                </Switch>
+            </div>
         )
     } 
 }
@@ -31,4 +34,4 @@ function mapDispatchToActions(dispatch){
 }
 
 
-export default connect(mapStateToProps,mapDispatchToActions)(Home);
+export default withRouter(connect(mapStateToProps,mapDispatchToActions)(Home));
