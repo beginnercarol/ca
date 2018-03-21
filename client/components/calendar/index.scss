@@ -1,0 +1,25 @@
+body{
+    background-color: papayawhip;
+}
+.calendar-wrapper{
+    .calendar-left{
+        .calendar-top{
+            div.calendar-selected{
+                display: inline-block;
+            }
+            ul.calendar-select{
+                display: inline-block;
+                list-style: none;
+                padding:0;
+                margin:0;
+            }
+        }
+        .calendar-box{
+            td{
+                div{
+                    border:2px solid 
+                }
+            }
+        }
+    }
+}

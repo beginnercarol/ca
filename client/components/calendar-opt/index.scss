@@ -1,0 +1,144 @@
+.calendar-wrapper{
+    width:500px;
+    margin:0 auto;
+    .calendar-left{
+        display: inline-block;
+        vertical-align: top;
+        width:75%;
+        .calendar-left-top{
+            form{
+                div{
+                    text-align: center;
+                    &[class='ant-col-6']{
+                        padding:0 3px;
+                    }
+                }
+            }
+            button{
+                height: 32px;
+            }
+        }
+        .calendar-box{
+            .calendar-table{
+                table{
+                    box-sizing: border-box;
+                    th,td,tr,div{
+                        box-sizing: border-box !important;
+                    }
+                    th,td{
+                        width:65px;
+                        height: 70px;
+                    }
+                    th{
+                        font-size:16px;
+                        padding:3px;
+                        &:last-of-type,&:nth-of-type(6){
+                            color: #fa8919;
+                        }
+                    }
+                    tr{
+                        td:nth-of-type(6),td:nth-of-type(7){
+                            color: #fa8919; 
+                        }
+                    }
+                    td{
+                        padding:0 0 0 1px;
+                        text-align:center;
+                        vertical-align: middle;
+                        div{
+                            box-sizing:border-box !important;
+                            p{
+                                margin:0;
+                            }
+                        }
+                        div.calendar-box-cell{
+                            width:55px;
+                            height:60px;
+                            padding:5px;
+                            border-radius:3px;
+                            border:2px solid transparent;
+                            &:hover{
+                                border:2px solid #fa8919;    
+                            }
+                        }
+                        .calendar-box-cell.calendar-box-cell-clicked{
+                            border:2px solid #fa8919;
+                        }
+                        div.calendar-box-cell-today{
+                            background:#fa8919;
+                            color:#000 !important;
+                        }
+                        .calendar-box-cell-solar{
+                            font-size:22px;
+                        }
+                        .calendar-box-cell-other{
+                            font-size:10px; 
+                        }
+                        .calendar-box-cell-month{
+                            color:#999;
+                        }
+                    }
+                }
+                ul[class='ant-pagination ant-table-pagination']{
+                    display: none;
+                }
+            }
+        }
+    }
+    .calendar-right{
+        display: inline-block;
+        width:20%;
+        margin-left:20px;
+        height:100%;
+        text-align:center;
+        font-weight:700;
+        vertical-align: middle;
+        div{
+            margin:20px auto;
+        }
+        div.calendar-top{
+            text-align:center;
+            font-size:10px;
+            margin:0;
+        }
+        div.calendar-day{
+            display: inline-block;
+            line-height: 100px;
+            width:100px;
+            height:100px;
+            color:#FFF;
+            border-radius:5px;
+            background-color:#fa8919;
+            font-size:50px;
+            box-shadow: 0 3px 5px #999,
+                        0 -3px 5px #999,
+                        3px 0 5px #999,
+                        -3px 0 5px #999;
+        }
+        div.calendar-lunar,div.calendar-chinaEra{ 
+            font-size:16px;
+        }
+        div.calendar-lunar{
+            margin-bottom:0;
+        }
+        div.calendar-chinaEra{
+            text-align:center;
+            margin:0 auto;
+            div:nth-child(2){
+                span{
+                    font-size:16px;
+                    margin-left: 5px;
+                    display: inline-block;
+                }
+            }
+        }
+        
+    }
+}
+
+.clearfix:before,.clearfix:after{
+    content:"";
+    display:block;
+    height:0;
+    clear:both;
+}

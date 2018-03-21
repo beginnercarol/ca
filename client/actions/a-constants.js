@@ -1,0 +1,4 @@
+export default {
+    INITIAL_STATE:'INITIAL_STATE',
+    FETCH_TIME:'FETCH_TIME',
+}

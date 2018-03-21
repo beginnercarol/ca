@@ -1,0 +1,22 @@
+.drop-down{
+    overflow:visible;
+    height: 50px;
+    display:inline-block;
+    &:hover{
+        ul{
+            height: 500px;
+            transition: height 5s;
+        }
+    }
+    ul{
+        overflow: hidden;
+        color:rgba(255,0,0,0.5);
+        height:0;
+        margin:0;
+        padding:0;
+        transition: height 0s;
+        li{
+            list-style: none;
+        }
+    }
+}
