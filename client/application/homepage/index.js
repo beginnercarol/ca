@@ -1,26 +1,22 @@
 import React,{Component} from 'react';
 import autoBind from 'react-autobind';
-
+import {Router,Link,Route,Switch,withRouter,IndexRoute} from 'react-router-dom';
 class Homepage extends Component{
     constructor(props){
-        super(prosp);
+        super(props);
         this.state={
             
         }
     }
     render(){
-        const homeList = ['Home','News','Articles','Links'];
         return (
-            <div class="homepage-content">
-                <div className="main"></div>
-                <div className="left-nav">
-                    <ul className="home-nav">
-                        {
-                            homeList.forEach((item)=>{
-                                return <li>{item}</li>  
-                            })
-                        }
-                    </ul>
+            <div className="homepage-main">
+                <div className="main">
+                    <Switch>
+                        <Route path='/path' component={Homepage} />
+                        <Route path='/dropdown' component={DropDown} />
+                        <Route path='/calendar' component={CalendarModal} />
+                    </Switch>
                 </div>
             </div>
         ) 

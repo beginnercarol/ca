@@ -7,13 +7,13 @@
     <title>CA</title>
     <link rel="stylesheet" href="/client/dist/index.css">
     <% for (let key in htmlWebpackPlugin.files.css ){%>
-    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css[key]%>">
+    <link rel="stylesheet" href=" /client<%=htmlWebpackPlugin.files.css[key]%>">
     <% } %>
 </head>
 <body>
    <div id="root"></div> 
     <% for (let key in htmlWebpackPlugin.files.js){%>
-    <script src="<%= htmlWebpackPlugin.files.js[key]%>"></script>
+    <script src="/client<%= htmlWebpackPlugin.files.js[key]%>"></script>
     <% } %>
 </body>
 </html>

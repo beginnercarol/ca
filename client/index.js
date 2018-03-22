@@ -4,6 +4,7 @@ import {Router,BrowserRouter} from 'react-router-dom';
 import store from './store/configureStore';
 import {Provider} from 'react-redux';
 import Home from './application/home';
+import Homepage from './application/homepage';
 import createBrowserHistory from 'history/createBrowserHistory';
 const history = createBrowserHistory();
 
@@ -11,7 +12,9 @@ const history = createBrowserHistory();
 ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
-            <Home/>
+            <Home>
+                <Homepage />
+            </Home>
         </Router>
     </Provider>,
     document.getElementById('root')

@@ -1,6 +1,5 @@
 import './index.scss';
 import React,{Component} from 'react';
-import {Router,Link,Route,Switch,withRouter,IndexRoute} from 'react-router-dom';
 import store from '../store/configureStore';
 import panelActions from '../actions/panel-actions';
 import { bindActionCreators } from 'redux';
@@ -11,37 +10,52 @@ import Homepage from './homepage/index';
 import CalendarModal from '../components/calendar-opt';
 import DropDown from '../components/dropdown';
 
+
+const pathRoute = {
+    'Home':'/',
+    'Dropdown':'/dropdown',
+    'Calendar':'/calendar',
+    'Article':'/homepage',
+}
+
+
+
 class Home extends Component{
     constructor(props){
         super(props);
         autoBind(this);
+        this.state={
+
+        }
     }
-    enterApp(){
+    enterApp(event){
+        event.preventDefault();
         const appEnter={
             enter:'calendar'
         }
         this.props.history.replace(appEnter,'calendar','#');
     }
     render(){
+        let keys = Object.keys(pathRoute);
+        let navs = [];
+        for(let i=0;i<keys.length;i++){
+            navs.push(
+                <li key={i}>
+                    <Link to={pathRoute[keys[i]]}>{keys[i]}</Link>
+                </li>
+            )
+        }
+        
         return (
-            <div className="context">
-                <div className="links">
-                    <ul>
-                        <li onClick={this.enterApp}>
-                            <Link to="/calendar">Calendar</Link> /
-                        </li>
-                        <li onClick={this.enterApp}>
-                            <Link to="/path"> path</Link> /
-                        </li>
-                    </ul>
+            <div className="homepage">
+                <div className="links" onClick={this.enterApp}>
+                    <div className="left-nav">
+                        <ul className="home-nav nav">
+                            {navs}
+                        </ul>
+                    </div>
                 </div>
-                <div className="home">
-                    <Switch>
-                        <Route path='/path' component={Homepage} />
-                        {/* <Route path='/dropdown' component={DropDown} /> */}
-                        <Route path='/calendar' component={CalendarModal} />
-                    </Switch>
-                </div>
+                {this.props.children}              
             </div>
         )
     } 

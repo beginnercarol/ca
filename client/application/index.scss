@@ -1,12 +1,30 @@
-.context{
+@mixin nav-li{
+    list-style: none;
+    font-size:0;
+    li{
+        &:hover{
+            background-color:#c9c9c9;
+            border-bottom:1px solid #999;
+        }
+        display: inline-block;
+        font-size: 1rem;
+        a{
+            text-decoration: none;
+        }  
+    }
+}
+.homepage{
     width:80%;
     height:1000px;
     margin:0 auto;
-    background-color:#999;
+    background-color:#ccc;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
     font-size: 16px;
+    ul.nav{
+        @include nav-li;
+    }
     >div{
         border:1px solid transparent;
         &:hover{
@@ -19,19 +37,10 @@
     .links{
         flex-grow: 1;
         ul{
-            list-style: none;
-            font-size:0;
-            li{
-                display: inline-block;
-                font-size: 1rem;
-                width:30%;
-                a{
-                    text-decoration: none;
-                }  
-            }
+            @include nav-li
         }
     }
     .home{
-        flex-grow: 2;
+        flex-grow: 3;
     }
 }

@@ -30,12 +30,13 @@ const webpackMiddle = (compiler,options={})=>{
 app.use(json());
 app.use(bodyParser());
 
-app.use(webpackMiddle(compiler,{
-    publicPath:webpackConfig.output.publicPath,
-    historyApiFallback: true,
-    compress: true,
-    stats: "minimal",
-}));
+//配置有问题
+// app.use(webpackMiddle(compiler,{
+//     publicPath:webpackConfig.output.publicPath,
+//     historyApiFallback: true,
+//     compress: true,
+//     stats: "minimal",
+// }));
 
 app.use(serve(path.join(__dirname,'../')));
 app.use(render(path.join(__dirname,'../')));
