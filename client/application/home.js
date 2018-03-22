@@ -1,13 +1,15 @@
 import './index.scss';
 import React,{Component} from 'react';
-import {Router,Link,Route,Switch,withRouter} from 'react-router-dom';
-import CalendarModal from '../components/calendar-opt';
-import DropDown from '../components/dropdown';
+import {Router,Link,Route,Switch,withRouter,IndexRoute} from 'react-router-dom';
 import store from '../store/configureStore';
 import panelActions from '../actions/panel-actions';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import autoBind from 'react-autobind';
+
+import Homepage from './homepage/index';
+import CalendarModal from '../components/calendar-opt';
+import DropDown from '../components/dropdown';
 
 class Home extends Component{
     constructor(props){
@@ -18,8 +20,7 @@ class Home extends Component{
         const appEnter={
             enter:'calendar'
         }
-        this.props.history.push(appEnter,'calendat','bar.html');
-        console.log('props.history=>',this.props.history);
+        this.props.history.replace(appEnter,'calendar','#');
     }
     render(){
         return (
@@ -34,9 +35,10 @@ class Home extends Component{
                         </li>
                     </ul>
                 </div>
-                <div className="homepage">
+                <div className="home">
                     <Switch>
-                        <Route exact path='/path' component={DropDown} />
+                        <Route path='/path' component={Homepage} />
+                        {/* <Route path='/dropdown' component={DropDown} /> */}
                         <Route path='/calendar' component={CalendarModal} />
                     </Switch>
                 </div>

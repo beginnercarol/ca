@@ -1,5 +1,5 @@
 const path = require('path');
-const webapck = require('webpack');
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const Autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -11,7 +11,8 @@ const webpackConfig = {
     },
     output:{
         filename:'bundle.js',
-        path:path.join(__dirname,'/client/dist')
+        path:path.join(__dirname,'/client/dist'),
+        publicPath:'/dist/',
     },
     module:{
         rules:[
@@ -60,10 +61,18 @@ const webpackConfig = {
         }),
         new HtmlWebpackPlugin({
             filename:'index.html',
-            template:path.join(__dirname,'/server/views/index.template.ejs'),
-            inject:false
+            template:path.join(__dirname,'/server/views/index.template.html'),
+            inject:true
         }),
-        new CleanWebpackPlugin([path.join(__dirname,'/client/dist/app.*.css'),path.join(__dirname,'/client/dist/app.*.css.map')]) 
+        // new CleanWebpackPlugin([path.join(__dirname,'/client/dist/app.*.css'),
+        //     path.join(__dirname,'/client/dist/app.*.css.map')]),
+        new CleanWebpackPlugin(['dist/app.*.css','dist/app.*.css.map'],{
+            root:path.join(__dirname,'/client/'),
+            exclude:'index.css',
+            dry:false,
+            verbose:true,
+            watch:true
+        }),
     ],
     
 }

@@ -6,8 +6,6 @@
   "scripts": {
     "start": "node --harmony ./server/app.js --dev",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --watch",
-    "browsersync": "browser-sync start --server ./client/dist/ '**/*.css, **/*.html,**/*.js'",
     "build": "webpack --watch --progress --colors --config webpack.config.js"
   },
   "author": "",
