@@ -63,7 +63,7 @@ const webpackConfig = {
             template:path.join(__dirname,'/server/views/index.template.ejs'),
             inject:false
         }),
-        new CleanWebpackPlugin([path.join(__dirname,'/client/dist/app.*.css')]) 
+        new CleanWebpackPlugin([path.join(__dirname,'/client/dist/app.*.css'),path.join(__dirname,'/client/dist/app.*.css.map')]) 
     ],
     
 }

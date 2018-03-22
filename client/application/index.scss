@@ -1,0 +1,37 @@
+.context{
+    width:80%;
+    height:1000px;
+    margin:0 auto;
+    background-color:#999;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    font-size: 16px;
+    >div{
+        border:1px solid transparent;
+        &:hover{
+            box-shadow: 0 3px 5px #FFF
+                        0 -3px 5px #FFF
+                        3px 0 5px #FFF
+                        -3px 0 5px #FFF;
+        }
+    }
+    .links{
+        flex-grow: 1;
+        ul{
+            list-style: none;
+            font-size:0;
+            li{
+                display: inline-block;
+                font-size: 1rem;
+                width:30%;
+                a{
+                    text-decoration: none;
+                }  
+            }
+        }
+    }
+    .homepage{
+        flex-grow: 2;
+    }
+}
