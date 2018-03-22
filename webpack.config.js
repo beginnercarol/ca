@@ -12,7 +12,7 @@ const webpackConfig = {
     output:{
         filename:'bundle.js',
         path:path.join(__dirname,'/client/dist'),
-        publicPath:'/dist/',
+        publicPath:'../',
     },
     module:{
         rules:[
@@ -56,6 +56,13 @@ const webpackConfig = {
         ]
     },
     plugins:[
+        new CleanWebpackPlugin(['dist/app.*.css','dist/app.*.css.map'],{
+            root:path.join(__dirname,'/client/'),
+            exclude:'index.css',
+            dry:false,
+            verbose:true,
+            watch:true
+        }),
         new ExtractTextPlugin({
             filename: '[name].[contenthash:8].css'
         }),
@@ -66,13 +73,6 @@ const webpackConfig = {
         }),
         // new CleanWebpackPlugin([path.join(__dirname,'/client/dist/app.*.css'),
         //     path.join(__dirname,'/client/dist/app.*.css.map')]),
-        new CleanWebpackPlugin(['dist/app.*.css','dist/app.*.css.map'],{
-            root:path.join(__dirname,'/client/'),
-            exclude:'index.css',
-            dry:false,
-            verbose:true,
-            watch:true
-        }),
     ],
     
 }
