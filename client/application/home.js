@@ -5,20 +5,11 @@ import panelActions from '../actions/panel-actions';
 import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import autoBind from 'react-autobind';
-
+import {Router,Link,Route,Switch,withRouter,IndexRoute} from 'react-router-dom';
 import Homepage from './homepage/index';
-import CalendarModal from '../components/calendar-opt';
-import DropDown from '../components/dropdown';
-
-
-const pathRoute = {
-    'Home':'/',
-    'Dropdown':'/dropdown',
-    'Calendar':'/calendar',
-    'Article':'/homepage',
-}
-
-
+import CalendarModal from '../components/calendar-opt/index';
+import DropDown from '../components/dropdown/index';
+import Check from '../components/checkbox';
 
 class Home extends Component{
     constructor(props){
@@ -28,35 +19,25 @@ class Home extends Component{
 
         }
     }
-    enterApp(event){
-        event.preventDefault();
-        const appEnter={
-            enter:'calendar'
-        }
-        this.props.history.replace(appEnter,'calendar','#');
-    }
+   
     render(){
-        let keys = Object.keys(pathRoute);
-        let navs = [];
-        for(let i=0;i<keys.length;i++){
-            navs.push(
-                <li key={i}>
-                    <Link to={pathRoute[keys[i]]}>{keys[i]}</Link>
-                </li>
-            )
-        }
-        
         return (
-            <div className="homepage">
-                <div className="links" onClick={this.enterApp}>
-                    <div className="left-nav">
-                        <ul className="home-nav nav">
-                            {navs}
-                        </ul>
-                    </div>
-                </div>
-                {this.props.children}              
+            <div>
+                {/* <Homepage /> */}
+                <Check />
             </div>
+            // <div className="homepage">
+            //     <div className="homepage-main">
+                // <Switch>
+                //     <Route exact path='/' component={Homepage} >
+                //         <Route path='/dropdown' component={DropDown} />
+                //         <Route path='/calendar' component={CalendarModal} />
+                //     </Route>
+                // </Switch>
+            //     </div>
+            //     {/* <Homepage /> */}
+            //     {/* {this.props.children}               */}
+            // </div>
         )
     } 
 }
@@ -75,4 +56,4 @@ function mapDispatchToActions(dispatch){
 }
 
 
-export default withRouter(connect(mapStateToProps,mapDispatchToActions)(Home));
+export default connect(mapStateToProps,mapDispatchToActions)(Home);

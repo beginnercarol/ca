@@ -20,8 +20,6 @@ class Checkbox extends React.Component {
     this.input = null;
   }
   componentDidMount() {
-    //store.render(this.render);
-    //store.dispatch(topActions.indicateTimeout);
   }
   handleGroupChange(event, index) {
     const { actions } = this.props;

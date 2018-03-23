@@ -1,6 +1,19 @@
 import React,{Component} from 'react';
 import autoBind from 'react-autobind';
 import {Router,Link,Route,Switch,withRouter,IndexRoute} from 'react-router-dom';
+
+import CalendarModal from '../../components/calendar-opt';
+import DropDown from '../../components/dropdown';
+import FlattenMenu from '../../components/flattenMenu';
+
+
+
+const pathRoute = {
+    'Dropdown':'/dropdown',
+    'Calendar':'/calendar',
+    'Article':'/homepage',
+}
+
 class Homepage extends Component{
     constructor(props){
         super(props);
@@ -8,16 +21,27 @@ class Homepage extends Component{
             
         }
     }
+
+    enterApp(event){
+        const appEnter={
+            enter:'calendar'
+        }
+    }
+
     render(){
+        let keys = Object.keys(pathRoute);
+        let navs = [];
+        for(let i=0;i<keys.length;i++){
+            navs.push(
+                <li key={i} onClick={()=>{this.enterApp()}}>
+                    <Link to={pathRoute[keys[i]]}>{keys[i]}</Link>
+                </li>
+            )
+        }
         return (
             <div className="homepage-main">
-                <div className="main">
-                    <Switch>
-                        <Route path='/path' component={Homepage} />
-                        <Route path='/dropdown' component={DropDown} />
-                        <Route path='/calendar' component={CalendarModal} />
-                    </Switch>
-                </div>
+                <FlattenMenu />
+                {this.props.children}
             </div>
         ) 
     }

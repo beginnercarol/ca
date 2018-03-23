@@ -12,9 +12,7 @@ const history = createBrowserHistory();
 ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
-            <Home>
-                <Homepage />
-            </Home>
+            <Home />  
         </Router>
     </Provider>,
     document.getElementById('root')
