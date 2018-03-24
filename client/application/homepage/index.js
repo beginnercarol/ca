@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import autoBind from 'react-autobind';
-import {Router,Link,Route,Switch,withRouter,IndexRoute} from 'react-router-dom';
+import {Link,Route,Switch,withRouter,IndexRoute} from 'react-router-dom';
 
 import CalendarModal from '../../components/calendar-opt';
 import DropDown from '../../components/dropdown';
@@ -17,8 +17,9 @@ const pathRoute = {
 class Homepage extends Component{
     constructor(props){
         super(props);
+        autoBind(this);
         this.state={
-            
+            location:document.location.href
         }
     }
 
@@ -40,7 +41,6 @@ class Homepage extends Component{
         }
         return (
             <div className="homepage-main">
-                <FlattenMenu />
                 {this.props.children}
             </div>
         ) 

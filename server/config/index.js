@@ -1,8 +1,9 @@
 const config = {
     homepage:{
         // 'Home':'/',
-        'Dropdown':'/dropdown',
-        'Calendar':'/calendar',
+        'Dropdown':'dropdown',
+        'Calendar':'calendar',
+        'flattenMenu':'menu',
     }
 }
 
