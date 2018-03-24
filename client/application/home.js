@@ -35,12 +35,12 @@ class Home extends Component{
         this.setState({
             location:document.location.pathname
         },()=>{
-            console.log('refresh=>');
+            // console.log('refresh=>');
         })
     }
 
     handleUrlChange(e,pathname){
-        console.log("setPathname=>",pathname);
+        // console.log("setPathname=>",pathname);
         this.setState({
             location:'/'+pathname,
         })
