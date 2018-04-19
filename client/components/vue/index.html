@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id='root'>
+        <span v-bind:title='message'>
+            {{message}}
+        </span>
+        <ul>
+            <li v-for="todo in todoList">{{todo.content}}</li>
+        </ul>
+        <div v-if="seen">now you see me</div>
+        <button v-on:click="handleClick">Click Me</button>
+        <input v-model="message" />
+        <ol>
+            <todo-item 
+                v-for="todo in todoList"
+                v-bind:todo="todo"
+                v-bind:key="todo.id">
+            </todo-item>
+        </ol>
+        <ul>
+            <todo-list
+                v-for="item in list"
+                v-bind:list="item"
+                v-bind:key="item.id"
+            ></todo-list>
+        </ul>
+    </div>
+    <script>
+        Vue.component('todo-item',{
+            props:['todo'],
+            template:'<li>{{todo.content}}</li>',
+        })
+        var app = new Vue({
+            el:"#root",
+            data:{
+                message:'Hello',
+                todoList:[{
+                    id:1,
+                    content:'Banana'
+                },{
+                    id:2,
+                    content:'Strawberry'
+                }],
+                list:[{
+                    id:'1',
+                    text:'奶酪'
+                },{
+                    id:'2',
+                    text:'蔬菜'
+                },{
+                    id:'3',
+                    text:'开心果'
+                }],
+                seen:true
+            },
+            methods:{
+                handleClick : function(){
+                    this.seen=false;
+                    this.message="lalala";
+                    console.log('click',this.seen);
+                }
+            }
+        })  
+        Vue.component('todo-item',{
+            props:['todo'],
+            template:'<li>{{todo.content}}</li>',
+        })
+
+
+        Vue.component('todo-list',{
+            props:['list'],
+            template:'<li>{{list.text}}</li>',
+        })
+
+
+    </script>
+</body>
+</html>

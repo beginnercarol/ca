@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+<div id="root">
+    <div class="radioSelect">
+        <form action="" class="cascade">
+            <label for="">
+                <input type="radio" name="type" value="student">Student
+            </label>
+            <label for="">
+                <input type="radio" name="type" value="Graduate">Graduate
+            </label>
+            <div class="selection">
+                <div class="student">
+                    <select name="city" id="ci">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <select name="school" id="sc">
+
+                    </select>
+                </div>
+                <div class="graduate">
+                    <input type="text" placeholder="input"/>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+    
+</div> 
+<script src="cascade.js"></script>
+<script>
+    (function(){
+        function lcs(str1,str2){
+            let len1 = str1.length,len2 = str2.length;
+            if(len1==0 || len2==0)return 0;
+            if(str1[len1-1]!=str2[len2-1]){
+                return lcs(str1.slice(0,len1-1),str2.slice(0,len2-1));
+            }else{
+                return Math.max(lcs(str1.slice(0,len1-1),str2),lcs(str1,str2.slice(0,len2-1)));
+            }      
+        }
+        //重复的子问题
+        //c[i][j]
+        function dyFind(str1,str2){
+            let len1=str1.length,len2=str2.length;
+            let c = [];
+            for(let i=0;i<=len1;i++){
+                c[i]=[];
+                for(let j=0;j<=len2;j++){
+                    c[i][j]=0;
+                }
+            }
+            for(let i=1;i<=len1;i++){
+                for(let j=1;j<=len2;j++){
+                    if(str1[i]==str2[j]){
+                        c[i][j]=c[i-1][j-1]+1;
+                    }else{
+                        c[i][j]=Math.max(c[i-1][j],c[i][j-1]);
+                    }
+                }
+            }
+            return c;
+        }
+        console.log(dyFind('abcdab','bdcaba'))
+    })();
+</script>
+</body>
+</html>

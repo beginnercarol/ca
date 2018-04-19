@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+<div id="root">
+    <div class="container">
+        <div class="sidebar">
+            <ul class="menu"></ul>
+        </div>
+        <div class="main">
+            <div class="post"></div>
+            <p class="copyright"></p>
+        </div>
+    </div>
+</div> 
+<script>
+// while(line=readline()){
+//     var lines = line.split(' ');
+//     var a = parseInt(lines[0]);
+//     print(magic(a));
+// }  
+
+(function(){
+    function direction(step,serial){
+        var arr = ['N','E','S','W'];
+        var index = 0;
+        for(var i=0;i<serial.length;i++){
+            if(serial[i]=='L'){
+                index--;
+            }else{
+                index++;
+            }
+        }
+        if(index<0){
+            let temp = (Math.abs(-index))%4;
+            index = temp==0?0:4-temp;
+        }else{
+            index = index%4;
+        }
+        return arr[index];
+    }
+var b = 'RRRRRRRRRRRRRRRRLLRLRLRLRLRLRLRRRLLLLLLLLLLLLLL';
+b = b.split("");
+    console.log(direction(b.length,b));
+})();
+
+(function(){
+    function possible(n,k){
+    var num = 0;
+    for(var i=1;i<=n;i++){
+        for(var j=1;j<=n;j++){
+            if(i%j>=k) num++; 
+        }
+    }
+    return num;
+}
+console.log("possible=>",possible(5,2));
+})();
+
+(function(){
+    function LinkNode(val){
+        this.val = val;
+        this.next = null;
+    }
+    function addNumber(l1,l2){
+        let index = 0;
+        let dummyHead = new LinkNode();
+        let p=l1,q=l2,r=dummyHead;
+        let temp = [],result = 0;
+        while(p!=null || q!=null){
+            result = (p?p.val:0)+(q?q.val:0)+index;
+            if(result>=10){
+                index = 1;
+                result = result%10;
+            }else{
+                index=0;
+            }
+            r.next = new LinkNode(result);
+            r = r.next;
+            p = p.next;
+            q = q.next;
+        }
+        if(index){
+            r.next = new ListNode(index);
+        }
+        return dummyHead.next;
+    }
+    function addList(l1,l2,carry){
+        if(l1==null && l2==null) return carry==0?null:new ListNode(carry);
+        let result = ((l1?l1.val:0)+(l2?l2.val:0)+carry);
+        if(result>=10){
+            carry = 1;
+            result = result%10;
+        }
+        cur = new ListNode(result);
+        cur.next = addList(l1.next,l2.next,carry);
+        return cur;
+    }
+})();
+
+
+
+
+</script>
+</body>
+</html>
